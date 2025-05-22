@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Subairi",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -9.3,
+      "left": -111,
+      "attrs": { "temperature": "44.3", "humidity": "64.5" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 102, "left": 186.2, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -39,
+      "left": 118.2,
+      "rotate": 90,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 242.7, "left": -98.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D15", "green", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "esp:D2", "led1:A", "green", [ "h61.9", "v-53.6", "h86.4", "v57.6" ] ],
+    [ "btn1:1.r", "esp:D4", "green", [ "v0" ] ],
+    [ "gas1:AOUT", "esp:D34", "green", [ "h67.2", "v-48", "h-134.4", "v-124.8" ] ],
+    [ "gas1:GND", "esp:GND.1", "black", [ "h115.2", "v-116" ] ],
+    [ "gas1:VCC", "esp:3V3", "red", [ "h144", "v-135.3" ] ],
+    [ "btn1:2.r", "esp:GND.1", "magenta", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
